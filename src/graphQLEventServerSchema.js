@@ -8,8 +8,9 @@ const channelsCallbacks = new Map();
 const typeDefs = gql(`
 	scalar ObjectOrPrimitive
 
-	type Channel {
-		id: String!
+	type Event {
+		event: ObjectOrPrimitive!
+		source: String!
 	}
 	
 	type Query {
@@ -17,11 +18,11 @@ const typeDefs = gql(`
 	}
 	
 	type Mutation {
-		event(channel: String!, source: String!, event: ObjectOrPrimitive!): Boolean
+		event(channel: ID!, source: String!, event: ObjectOrPrimitive!): Boolean!
 	}
 	
 	type Subscription {
-		event(channel: String!, excludeSource: String): ObjectOrPrimitive!
+		event(channel: ID!, excludeSource: String): Event!
 	}
 `);
 
@@ -41,6 +42,7 @@ const resolvers = {
 					});
 				}
 			}
+			return true;
 		}
 	},
 	Query: {
@@ -57,7 +59,10 @@ const resolvers = {
 				const callback = (event) => {
 					if(!args.hasOwnProperty('excludeSource') || event.source !== args.excludeSource) {
 						asyncIterator.pushValue({
-							event: event.event
+							event: {
+								event: event.event,
+								source: event.source
+							}
 						});
 					}
 				};

@@ -1,6 +1,6 @@
 {
   "name": "graphql-event-server",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Simple Pub/Sub GraphQL Server over HTTP/WS",
   "keywords": [],
   "author": {
