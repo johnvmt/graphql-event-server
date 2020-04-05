@@ -1,0 +1,26 @@
+{
+  "name": "graphql-event-server",
+  "version": "0.0.1",
+  "description": "Simple Pub/Sub GraphQL Server over HTTP/WS",
+  "keywords": [],
+  "author": {
+    "name": "John Murphy-Teixidor",
+    "email": "johnvmt@gmail.com"
+  },
+  "private": true,
+  "dependencies": {
+    "command-line-args": "^5.1.1",
+    "command-line-usage": "^6.1.0",
+    "esm": "^3.2.25",
+    "event-emitter-async-iterator": "^1.0.1",
+    "graphql-http-ws-server": "^1.0.3",
+    "graphql-tag": "^2.10.3",
+    "graphql-tools": "^4.0.7",
+    "node-fetch": "^2.6.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node -r esm src/cli.js",
+    "tar": "tar -cvf graphql-event-server.tar Dockerfile package.json src"
+  }
+}

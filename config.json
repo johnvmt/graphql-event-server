@@ -1,0 +1,9 @@
+{
+  "server": {
+    "port": 80,
+    "graphqlPath": "/graphql",
+    "subscriptionsPath": "/graphql",
+    "debug": true
+  },
+  "debug": true
+}
